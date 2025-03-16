@@ -1,0 +1,111 @@
+.cards {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    grid-template-rows: repeat(2, 2fr);
+    grid-row-gap: 45px;
+    grid-column-gap: 45px;
+    padding: 100px 0 0 0;
+}
+
+
+.card {
+    background-color: white;
+    border-radius: 15px 15px 15px 15px;
+    max-width: 282px;
+    box-sizing: border-box;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.card__name-place {
+    font-size: 24px;
+    font-weight: 900;
+    max-width: 210px;
+    background-color: white;
+    margin: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.card__photo {
+    width: 295px;
+    height: 295px;
+    border-radius: 15px 15px 0 0;
+}
+
+.card__button-trash {
+    background-image: url("../images/Trash.png");
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.card__button-trash:hover {
+    opacity: 20%;
+}
+
+
+.card__button-love {
+    width: 25px;
+    height: 25px;
+    background-image: url("../images/corazonblanco.jpg");
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+    border: 0;
+    background-repeat: round;
+    cursor: pointer;
+    background-size: contain;
+    padding: 0;
+
+}
+
+.card__button-love:hover {
+    opacity: 20%;
+}
+
+.card__button-love_active {
+    background-image: url("../images/corazonnegro.jpg");
+}
+
+.card__like {
+    color: #000;
+    background-color: white;
+    margin: 8px;
+    display: flex;
+    justify-content: end;
+    font-size: 16px;
+    padding: 0 20px 8px;
+}
+
+@media screen and (min-width:650px) and (max-width:1000px) {
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+        grid-template-rows: repeat(3, 3fr);
+        grid-row-gap: 30px;
+        grid-column-gap: 30px;
+    }
+}
+
+@media screen and (min-width:320px) and (max-width:649px) {
+    .cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        padding-top: 50px;
+    }
+}

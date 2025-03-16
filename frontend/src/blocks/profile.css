@@ -1,0 +1,166 @@
+.profile {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 120px 400px 35px auto 160px;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "photo title edit . add"
+        "photo subtitle . . .";
+}
+
+.profile__container-photo {
+    border-radius: 60px;
+    width: 120px;
+    height: 120px;
+    grid-area: photo;
+    position: relative;
+}
+.profile__photo {
+    border-radius: 60px;
+    width: 120px;
+    height: 120px;
+    grid-area: photo;
+    transition: opacity 0.3s; 
+}
+
+
+.profile__photo_edit {
+    width: 35px;
+    height: 35px;
+    background-image: url("/src/images/editavatar.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.profile__container-photo:hover .profile__photo {
+    opacity: 0.3; 
+}
+
+.profile__container-photo:hover .profile__photo_edit {
+    opacity: 1; 
+}
+
+.profile__title {
+    color: white;
+    font-size: 42px;
+    line-height: 56px;
+    margin: 0;
+    grid-area: title;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0 10px;
+    white-space: nowrap;
+}
+
+.profile__subtitle {
+    color: white;
+    font-size: 18px;
+    grid-area: subtitle;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-left: 20px;
+}
+
+.profile__button {
+    background-color: black;
+    border: 0;
+    height: 30px;
+    width: 30px;
+    grid-area: edit;
+    padding: 10px 0;
+}
+
+.profile__button_edit {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.profile__button_edit:hover {
+    opacity: 30%;
+}
+
+.profile__button-add {
+    background-color: black;
+    border: 0;
+    grid-area: add;
+    padding: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+
+
+.profile__button-add_card {
+    grid-area: add;
+    width: 120px;
+}
+
+.profile__button-add_card:hover {
+    opacity: 30%;
+}
+
+
+@media screen and (min-width:650px) and (max-width:880px) {
+    .profile {
+        grid-template-columns: 120px 400px auto;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            "photo title edit"
+            "photo subtitle ."
+            ". add add";
+        max-width: 620px;
+    }
+
+}
+
+@media screen and (min-width:320px) and (max-width:649px) {
+    .profile {
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto 35px auto;
+        grid-template-areas:
+            "photo photo"
+            "title edit"
+            "subtitle subtitle"
+            "add add";
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .profile__title {
+        font-size: 28px;
+        padding: 0;
+    }
+
+    .profile__button {
+        padding: 0;
+        align-self: center;
+    }
+
+    .profile__photo {
+        margin: 0 auto;
+    }
+
+    .profile__button_edit {
+        padding: 0;
+
+    }
+
+    .profile__button-add {
+        flex-direction: column;
+        align-content: center;
+        padding: 20px 0 0 5px;
+    }
+
+    .profile__button-add_card {
+        width: 200px;
+        height: 40px;
+    }
+}
