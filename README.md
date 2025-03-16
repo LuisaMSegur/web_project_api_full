@@ -29,9 +29,9 @@ Google Cloud
 - Validación de formularios y ventanas modales.
 - Despliegue en un servidor remoto en Google Cloud.
 
-![alt text](<frontend/src/images/Captura de pantalla 2025-02-12 013113.png>)
+![alt text](<backend/images/Captura de pantalla 2025-01-16 001011.png>)
 
-![alt text](<frontend/src/images/Captura de pantalla 2025-02-12 020402.png>)
+![alt text](<backend/images/Captura de pantalla 2025-01-16 142254.png>)
 
 ![alt text](<frontend/src/images/Captura de pantalla 2025-02-17 123334.png>)
 
@@ -42,7 +42,7 @@ Google Cloud
 
 # Frontend: 
 - Clona el repositorio:
-git clone 
+git clone git@github.com:LuisaMSegur/web_project_api_full.git
 
 - Ve a la carpeta del frontend:
 cd nombre-repo/frontend
