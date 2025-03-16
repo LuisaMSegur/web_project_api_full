@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require("cors");
-const { celebrate } = require("celebrate");
+const { celebrate, errors } = require("celebrate");
 const Joi = require("joi");
 const {requestLogger, errorLogger} = require('./middlewares/logger');
 const path = require("path");
@@ -62,6 +62,7 @@ app.use("/users", usersRoutes);
 app.use("/cards", cardsRoutes);
 
 app.use(errorLogger);
+app.use(errors());
 
 app.use((err, req, res, next) => {
   res.status(err.statusCode || 500).json({ message: err.message || "Error interno del servidor" });
