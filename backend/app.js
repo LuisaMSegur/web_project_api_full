@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const mongoose = require('mongoose');
 const cors = require("cors");
 const { celebrate, errors } = require("celebrate");
@@ -21,15 +21,32 @@ mongoose.connect("mongodb://localhost:27017/aroundb")
   .then(() => console.log('Conectado a MongoDB'))
   .catch((err) => console.error('Error de conexión a MongoDB:', err));
 
+  const allowedCors = [
+    'https://luisadev.lat',
+    'http://luisadev.lat',
+    'http://localhost:3000'
+  ];
 
-const corsOptions = {
-  origin: "http://localhost:5173",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
-  allowedHeaders: "Content-Type, Authorization",
-};
+  app.use((req, res, next) => {
+    const { origin } = req.headers;
+    if (allowedCors.includes(origin)) {
+      res.header('Access-Control-Allow-Origin', origin);
+      res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+      res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    }
 
-app.use(cors(corsOptions));
+    if (req.method === 'OPTIONS') {
+      return res.sendStatus(204);
+    }
+
+    next();
+  });
+
+  app.get('/crash-test', () => {
+    setTimeout(() => {
+      throw new Error('El servidor va a caer');
+    }, 0);
+  });
 
 app.post(
   "/signin",
