@@ -4,13 +4,15 @@ Aplicación para compartir tarjetas con fotos de lugares alrededor del mundo. Lo
 
 ## Tecnologias utilizadas
 
-_Frontend:_ 
+_Frontend:_
+
 1. HTML y CSS
 2. JavaScript
 3. React
 4. Vite
 
 _Backend:_
+
 1. Express
 2. MongoDB
 3. Node.js
@@ -37,34 +39,36 @@ Google Cloud
 
 ![alt text](<frontend/src/images/Captura de pantalla 2025-02-17 123533.png>)
 
-
 ## Instalación
 
-# Frontend: 
+# Frontend:
+
 - Clona el repositorio:
-git clone git@github.com:LuisaMSegur/web_project_api_full.git
+  git clone git@github.com:LuisaMSegur/web_project_api_full.git
 
 - Ve a la carpeta del frontend:
-cd nombre-repo/frontend
+  cd nombre-repo/frontend
 
 - Instala las dependencias:
-npm install
+  npm install
 
 - Ejecuta el servidor de desarrollo:
-npm run dev
-
-* La aplicación estará disponible en http://localhost:5173.
+  npm run dev
 
 # Backend:
+
 - Ve a la carpeta del backend:
-cd nombre-repo/backend
+  cd nombre-repo/backend
 
 - Instala las dependencias:
-npm install
+  npm install
 
 * Crea un archivo .env con las variables necesarias (como la conexión a MongoDB y las claves secretas).
 
 - Ejecuta el servidor:
-npm start
+  npm start
 
-* El backend estará disponible en http://localhost:3000.
+## Puedes visitar la pagina desplegada en:
+
+http://luisadev.lat
+https://luisadev.lat
