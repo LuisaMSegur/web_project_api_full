@@ -159,9 +159,9 @@ getUser() {
 
 
 const api = new Api({
-  baseUrl: "https://luisadev.lat/api"
+  baseUrl: "https://api.luisadev.lat"
 });
 
 export default api;
 
-  
+
