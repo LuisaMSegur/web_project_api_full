@@ -1,10 +1,3 @@
-# http://editorconfig.org
-
-# Una propiedad especial que debe especificarse en la parte superior del archivo.
-# Cuando se establece a "true", evita que EditorConfig siga buscando más hacia arriba
-# en el árbol del directorio los archivos .editorconfig.
-root = true
-
 [*]
 # Estilo de indentación
 # Valores posibles: tabulación, espacio

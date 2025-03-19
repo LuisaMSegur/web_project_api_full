@@ -23,10 +23,12 @@ mongoose
   .then(() => console.log("Conectado a MongoDB"))
   .catch((err) => console.error("Error de conexión a MongoDB:", err));
 
+app.use(cors());
 const allowedCors = [
   "https://luisadev.lat",
-  "http://luisadev.lat",
+  "https://www.luisadev.lat",
   "http://localhost:3000",
+  "http://localhost:5173",
 ];
 
 app.use((req, res, next) => {
@@ -54,7 +56,7 @@ app.get("/crash-test", () => {
 });
 
 app.post(
-  "/api/signin",
+  "/signin",
   celebrate({
     body: Joi.object().keys({
       email: Joi.string().required().email(),
@@ -65,7 +67,7 @@ app.post(
 );
 
 app.post(
-  "/api/signup",
+  "/signup",
   celebrate({
     body: Joi.object().keys({
       name: Joi.string().min(2).max(30).default("Jacques Cousteau"),
@@ -81,8 +83,8 @@ app.post(
 );
 
 app.use(authMiddleware);
-app.use("/api/users", usersRoutes);
-app.use("/api/cards", cardsRoutes);
+app.use("/users", usersRoutes);
+app.use("/cards", cardsRoutes);
 
 app.use(errorLogger);
 app.use(errors());
@@ -92,7 +94,7 @@ app.use((err, req, res, next) => {
     .status(err.statusCode || 500)
     .json({ message: err.message || "Error interno del servidor" });
 });
-
+app.use(express.static(path.join(__dirname, "/")));
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
