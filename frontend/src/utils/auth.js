@@ -1,4 +1,4 @@
-const BASE_URL = "http://luisadev.lat/api";
+const BASE_URL = "https://luisadev.lat/api";
 
 export async function register(email, password) {
   try {
