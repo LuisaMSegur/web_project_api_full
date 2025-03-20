@@ -12,14 +12,23 @@ const getAllCards = async (req, res) => {
 };
 
 const getCardById = async (req, res) => {
-  await Card.findById(req.params.cardId)
-  .then(card => {
-    if(!card.owner.equals(req.user._id)) {
+  try {
+    const card = await Card.findById(req.params.cardId);
+
+    if (!card) {
+      return res.status(404).json({ message: "Tarjeta no encontrada" });
+    }
+
+    if (!card.owner.equals(req.user._id)) {
       return res.status(403).json({ message: "No tienes permiso para ver esta tarjeta" });
     }
-    return res.json(card);
-  })
-    }
+
+    res.json(card);
+  } catch (err) {
+    console.error("Error al obtener la tarjeta:", err);
+    res.status(500).json({ message: "Error al obtener la tarjeta" });
+  }
+};
 
 
 const createCard = async (req, res) => {
@@ -30,13 +39,13 @@ const createCard = async (req, res) => {
       return res.status(400).json({ message: "El nombre y el enlace son obligatorios" });
     }
 
-    const card = await Card.create({
+    const newCard = await Card.create({
       name,
       link,
       owner: req.user._id,
     });
 
-    const populatedCard = await card.populate("owner");
+    const populatedCard = await newCard.populate("owner");
 
     res.status(201).json(populatedCard);
   } catch (err) {
@@ -61,7 +70,7 @@ const deleteCard = async (req, res) => {
       return res.status(403).json({ message: "No tienes permiso para eliminar esta tarjeta" });
     }
 
-    await Card.deleteOne({ _id: cardId });
+    await card.deleteOne({ _id: cardId });
     res.status(200).json({ message: "Tarjeta eliminada con éxito" });
   } catch (err) {
     console.error("Error eliminando tarjeta:", err);

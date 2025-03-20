@@ -99,7 +99,7 @@ app.use((err, req, res, next) => {
     .status(err.statusCode || 500)
     .json({ message: err.message || "Error interno del servidor" });
 });
-app.use(express.static(path.join(__dirname, "/")));
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
