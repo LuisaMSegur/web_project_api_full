@@ -23,16 +23,16 @@ mongoose
   .then(() => console.log("Conectado a MongoDB"))
   .catch((err) => console.error("Error de conexión a MongoDB:", err));
 
-app.use(cors());
 const allowedCors = [
   "https://luisadev.lat",
   "https://www.luisadev.lat",
+  "https://api.luisadev.lat",
   "http://localhost:3000",
   "http://localhost:5173",
 ];
 
 app.use((req, res, next) => {
-  const { origin } = req.headers;
+  const origin  = req.headers.origin;
   if (allowedCors.includes(origin)) {
     res.header("Access-Control-Allow-Origin", origin);
     res.header(
