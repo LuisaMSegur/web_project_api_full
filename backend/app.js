@@ -9,24 +9,28 @@ const cardsRoutes = require("./routes/cards");
 const usersRoutes = require("./routes/users");
 const authMiddleware = require("./middlewares/auth");
 const { login, createUser } = require("./controllers/userController");
-
+require('dotenv').config();
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
 
-const { PORT = 3000 } = process.env;
+const port = process.env.PORT || 3000;
+const dbUrl = process.env.DB_URL;
+
 
 mongoose
-  .connect("mongodb://localhost:27017/aroundb")
+  .connect(dbUrl)
   .then(() => console.log("Conectado a MongoDB"))
   .catch((err) => console.error("Error de conexión a MongoDB:", err));
 
   app.use(cors());
 app.options("*", cors());
+const frontendUrl = process.env.FRONTEND_URL;
 
 const allowedCors = [
+  frontendUrl,
   "https://luisadev.lat",
   "https://www.luisadev.lat",
   "https://api.luisadev.lat",
@@ -35,7 +39,7 @@ const allowedCors = [
 ];
 
 app.use(function (req, res, next) {
-  const origin = req.headers.origin; 
+  const origin = req.headers.origin;
   console.log('Origin recibido:', origin);
   if (allowedCors.includes(origin)) {
     res.header("Access-Control-Allow-Origin", origin);
@@ -101,6 +105,6 @@ app.use((err, req, res, next) => {
     .json({ message: err.message || "Error interno del servidor" });
 });
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
-app.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Servidor escuchando en http://localhost:${port}`);
 });
