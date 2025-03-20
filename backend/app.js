@@ -5,10 +5,10 @@ const { celebrate, errors } = require("celebrate");
 const Joi = require("joi");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
 const path = require("path");
-const cardsRoutes = require("./routes/cards");
-const usersRoutes = require("./routes/users");
-const authMiddleware = require("./middlewares/auth");
-const { login, createUser } = require("./controllers/userController");
+const cardsRoutes = require("./routes/cards.js");
+const usersRoutes = require("./routes/users.js");
+const authMiddleware = require("./middlewares/auth.js");
+const { login, createUser } = require("./controllers/userController.js");
 
 const app = express();
 
