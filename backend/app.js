@@ -17,11 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
 
 const port = process.env.PORT || 3000;
-const dbUrl = process.env.DB_URL;
-
 
 mongoose
-  .connect(dbUrl)
+  .connect("mongodb://localhost:27017/aroundb")
   .then(() => console.log("Conectado a MongoDB"))
   .catch((err) => console.error("Error de conexión a MongoDB:", err));
 
