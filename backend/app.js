@@ -23,6 +23,9 @@ mongoose
   .then(() => console.log("Conectado a MongoDB"))
   .catch((err) => console.error("Error de conexión a MongoDB:", err));
 
+  app.use(cors());
+app.options("*", cors());
+
 const allowedCors = [
   "https://luisadev.lat",
   "https://www.luisadev.lat",
@@ -31,21 +34,23 @@ const allowedCors = [
   "http://localhost:5173",
 ];
 
-app.use((req, res, next) => {
-  const origin  = req.headers.origin;
-  if (allowedCors.includes(origin)) {
+app.use(function (req, res, next) {
+  const { origin } = req.headers;
+  if (allowedCords.includes(origin)) {
     res.header("Access-Control-Allow-Origin", origin);
-    res.header(
-      "Access-Control-Allow-Methods",
-      "GET,HEAD,PUT,PATCH,POST,DELETE"
-    );
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   }
-
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(204);
+  const { method } = req;
+  const DEFAULT_ALLOWED_METHODS = "GET,HEAD,PUT,PATCH,POST,DELETE";
+  if (method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", DEFAULT_ALLOWED_METHODS);
   }
+  const requestHeaders = req.headers["access-control-request-headers"];
+  if (method === "OPTIONS") {
 
+    res.header("Access-Control-Allow-Headers", requestHeaders);
+
+    return res.end();
+  }
   next();
 });
 
@@ -94,7 +99,7 @@ app.use((err, req, res, next) => {
     .status(err.statusCode || 500)
     .json({ message: err.message || "Error interno del servidor" });
 });
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.use(express.static(path.join(__dirname, "/")));
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
