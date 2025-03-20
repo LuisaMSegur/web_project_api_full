@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
-console.log(process.env);
+
 const { PORT = 3000 } = process.env;
 
 mongoose
@@ -35,6 +35,7 @@ const allowedCors = [
 ];
 
 app.use(function (req, res, next) {
+  console.log('Origin recibido:', origin);
   const { origin } = req.headers;
   if (allowedCors.includes(origin)) {
     res.header("Access-Control-Allow-Origin", origin);

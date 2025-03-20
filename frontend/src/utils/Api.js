@@ -159,7 +159,7 @@ getUser() {
 
 
 const api = new Api({
-  baseUrl: import.meta.env.VITE_API_URL || "http://localhost:3000",
+  baseUrl: "https://api.luisadev.lat",
 });
 
 export default api;
