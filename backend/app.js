@@ -25,10 +25,8 @@ mongoose
 
   app.use(cors());
 app.options("*", cors());
-const frontendUrl = process.env.FRONTEND_URL;
 
 const allowedCors = [
-  frontendUrl,
   "https://luisadev.lat",
   "https://www.luisadev.lat",
   "https://api.luisadev.lat",

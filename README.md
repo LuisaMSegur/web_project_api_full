@@ -47,7 +47,7 @@ Google Cloud
   git clone git@github.com:LuisaMSegur/web_project_api_full.git
 
 - Ve a la carpeta del frontend:
-  cd nombre-repo/frontend
+  cd web_project_api_full/frontend
 
 - Instala las dependencias:
   npm install
@@ -58,7 +58,7 @@ Google Cloud
 # Backend:
 
 - Ve a la carpeta del backend:
-  cd nombre-repo/backend
+  cd web_project_api_full/backend
 
 - Instala las dependencias:
   npm install
