@@ -70,5 +70,5 @@ Google Cloud
 
 ## Puedes visitar la pagina desplegada en:
 
-http://luisadev.lat
+https://luisadev.lat
 https://luisadev.lat
